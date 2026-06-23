@@ -1,4 +1,3 @@
-"""B2 Password Checker starter (CLI).
 
 専門学校1年生向けのシンプルなスターターです。
 標準ライブラリだけで動作します。
