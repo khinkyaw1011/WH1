@@ -1,19 +1,44 @@
-"""
+"""B2 Password Checker starter (CLI).
+
 専門学校1年生向けのシンプルなスターターです。
 標準ライブラリだけで動作します。
 """
 
 import re
-
+import random
+import string
 
 COMMON_PATTERNS = [
+    "abcdefghijklmnopqrstuvwxyz",
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "qwertyuiop",
+    "asdfghjkl",
+    "zxcvbnm",
     "password",
-    "123456",
+    "0123456789",
     "qwerty",
     "admin",
     "letmein",
 ]
+def generate_password():
+    length=16
+    """Generate a strong random password."""
+    lowercase=string.ascii_lowercase
+    uppercase=string.ascii_uppercase
+    digits=string.digits
+    symbols="!@#$%^&*"
 
+    password=[
+        random.choice(lowercase),
+        random.choice(uppercase),
+        random.choice(digits),
+        random.choice(symbols)
+    ]
+    all_characters = lowercase + uppercase + digits + symbols
+    while len(password) <length:
+        password.append(random.choice(all_characters))
+    random.shuffle(password)
+    return "".join(password)
 
 def check_length(password):
     """長さによる点数とコメントを返す。"""
@@ -101,9 +126,20 @@ def main():
     print("終了したいときは 'q' を入力してください。")
 
     while True:
-        language = input("Choose language (en/jp): ").strip().lower()
         user_input = input("\nパスワードを入力: ").strip()
+        if user_input.lower() == "q":
+            print("終了します。")
+            break
+        else:
+            resultCheck = evaluate_password(user_input)
+            print_result(resultCheck)
 
+        choice = input("\nおすすめのパスワードを生成しますか？ (y/n): ").lower()
+
+        if choice == "y":
+            print("おすすめパスワード:", generate_password())
+        elif choice == "n":
+            user_input = input("\nパスワードを入力: ").strip()
         if user_input.lower() == "q":
             print("終了します。")
             break
