@@ -8,6 +8,8 @@ import re
 import random
 import string
 
+
+
 COMMON_PATTERNS = [
     "abcdefghijklmnopqrstuvwxyz",
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -20,6 +22,7 @@ COMMON_PATTERNS = [
     "admin",
     "letmein",
 ]
+
 def generate_password():
     length=16
     """Generate a strong random password."""
@@ -160,6 +163,7 @@ def main():
 # - 16文字以上の推奨ルールを導入する
 # - パスフレーズ（単語3つ以上）の判定を追加する
 # - Streamlit版を別ファイルで作る
+
 
 
 if __name__ == "__main__":
