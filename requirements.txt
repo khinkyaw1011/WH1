@@ -1,0 +1,2 @@
+# Policy: no external dependencies for this starter.
+# Python standard library only.
